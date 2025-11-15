@@ -6,20 +6,23 @@
 }
 
 body {
-    background: #2a2a2a; /* Темно-серый фон */
+    background: #2a2a2a;
     color: white;
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* ИЗМЕНИЛ: колонка вместо center */
+    justify-content: flex-start; /* ИЗМЕНИЛ: начало вместо center */
     align-items: center;
-    padding: 20px;
+    padding: 40px 20px; /* УВЕЛИЧИЛ: больше отступов */
 }
 
 .container {
     max-width: 600px;
     width: 100%;
     text-align: center;
+    opacity: 0;
+    animation: smoothAppear 1s ease-out forwards; /* ВЫНЕС из media query */
 }
 
 /* Аватарка */
@@ -28,7 +31,7 @@ body {
     height: 150px;
     border-radius: 50%;
     margin: 0 auto 25px;
-    border: 4px solid #3498db; /* Синяя граница */
+    border: 4px solid #3498db;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
 }
@@ -42,7 +45,7 @@ body {
 
 /* Заголовок */
 .title {
-    color: #2980b9; /* Темно-синий */
+    color: #2980b9;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 25px;
@@ -52,11 +55,12 @@ body {
 /* Blob контейнер */
 .content-blob {
     background: rgba(255, 255, 255, 0.1);
-    border: 2px solid #34495e; /* Темная граница */
-    border-radius: 25px; /* Закругленные углы */
+    border: 2px solid #34495e;
+    border-radius: 25px;
     padding: 30px;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    margin-bottom: 25px; /* ДОБАВИЛ: отступ снизу */
 }
 
 /* Описание */
@@ -71,12 +75,13 @@ body {
 /* Стили для блока личных сообщений */
 .personal-message-blob {
     background: rgba(255, 255, 255, 0.08);
-    border: 2px solid #2c3e50; /* Темно-синяя граница */
+    border: 2px solid #2c3e50;
     border-radius: 20px;
     padding: 25px;
-    margin-top: 25px;
     backdrop-filter: blur(10px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    max-width: 600px; /* ДОБАВИЛ: ограничение ширины */
+    width: 100%; /* ДОБАВИЛ: занимает всю доступную ширину */
     animation: smoothAppear 1s ease-out 0.3s both;
 }
 
@@ -128,7 +133,7 @@ body {
 
 /* Telegram панель */
 .telegram {
-    border-color: #3498db; /* Синяя граница */
+    border-color: #3498db;
 }
 
 .telegram .panel-text {
@@ -137,7 +142,7 @@ body {
 
 /* Twitch панель */
 .twitch {
-    border-color: #9146ff; /* Фиолетовая граница */
+    border-color: #9146ff;
 }
 
 .twitch .panel-text {
@@ -180,8 +185,24 @@ body {
     50% { transform: translateY(-8px); }
 }
 
+/* Анимация плавного появления - ВЫНЕСЕНА из media query */
+@keyframes smoothAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Адаптивность */
 @media (max-width: 480px) {
+    body {
+        padding: 20px 15px; /* УМЕНЬШИЛ: отступы на мобилках */
+    }
+    
     .panels-container {
         flex-direction: column;
         align-items: center;
@@ -208,22 +229,8 @@ body {
         width: 120px;
         height: 120px;
     }
-
-    /* Добавь в конец style.css */
- .container {
-    opacity: 0;
-    animation: smoothAppear 1s ease-out forwards;
- }
-
- @keyframes smoothAppear {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+    
+    .personal-message-blob {
+        padding: 20px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 }
