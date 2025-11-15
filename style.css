@@ -11,10 +11,10 @@ body {
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
     display: flex;
-    flex-direction: column; /* ИЗМЕНИЛ: колонка вместо center */
-    justify-content: flex-start; /* ИЗМЕНИЛ: начало вместо center */
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    padding: 40px 20px; /* УВЕЛИЧИЛ: больше отступов */
+    padding: 40px 20px;
 }
 
 .container {
@@ -22,7 +22,7 @@ body {
     width: 100%;
     text-align: center;
     opacity: 0;
-    animation: smoothAppear 1s ease-out forwards; /* ВЫНЕС из media query */
+    animation: smoothAppear 1s ease-out forwards;
 }
 
 /* Аватарка */
@@ -60,7 +60,7 @@ body {
     padding: 30px;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    margin-bottom: 25px; /* ДОБАВИЛ: отступ снизу */
+    margin-bottom: 0; /* УБРАЛ отступ снизу */
 }
 
 /* Описание */
@@ -72,17 +72,18 @@ body {
     text-align: center;
 }
 
-/* Стили для блока личных сообщений */
+/* Стили для блока личных сообщений - ИСПРАВЛЕННЫЕ */
 .personal-message-blob {
     background: rgba(255, 255, 255, 0.08);
     border: 2px solid #2c3e50;
     border-radius: 20px;
     padding: 25px;
+    margin-top: 25px;
     backdrop-filter: blur(10px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    max-width: 600px; /* ДОБАВИЛ: ограничение ширины */
-    width: 100%; /* ДОБАВИЛ: занимает всю доступную ширину */
     animation: smoothAppear 1s ease-out 0.3s both;
+    max-width: 600px; /* ДОБАВИЛ: такая же ширина как у container */
+    width: 100%; /* ДОБАВИЛ: занимает всю ширину в пределах max-width */
 }
 
 .message-title {
@@ -185,7 +186,6 @@ body {
     50% { transform: translateY(-8px); }
 }
 
-/* Анимация плавного появления - ВЫНЕСЕНА из media query */
 @keyframes smoothAppear {
     from {
         opacity: 0;
@@ -200,7 +200,7 @@ body {
 /* Адаптивность */
 @media (max-width: 480px) {
     body {
-        padding: 20px 15px; /* УМЕНЬШИЛ: отступы на мобилках */
+        padding: 20px 15px;
     }
     
     .panels-container {
