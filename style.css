@@ -72,40 +72,7 @@ body {
     text-align: center;
 }
 
-/* Стили для блока личных сообщений - ИСПРАВЛЕННЫЕ */
-.personal-message-blob {
-    background: rgba(255, 255, 255, 0.08);
-    border: 2px solid #2c3e50;
-    border-radius: 20px;
-    padding: 25px;
-    margin-top: 25px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    animation: smoothAppear 1s ease-out 0.3s both;
-    max-width: 600px; /* ДОБАВИЛ: такая же ширина как у container */
-    width: 100%; /* ДОБАВИЛ: занимает всю ширину в пределах max-width */
-}
 
-.message-title {
-    color: #3498db;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 12px;
-    text-align: center;
-}
-
-.message-text {
-    color: #ecf0f1;
-    font-size: 15px;
-    line-height: 1.5;
-    text-align: center;
-}
-
-.nickname {
-    color: #3498db;
-    font-weight: bold;
-    text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
-}
 
 /* Контейнер панелей */
 .panels-container {
